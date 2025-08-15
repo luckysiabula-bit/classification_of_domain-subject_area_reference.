@@ -13,3 +13,12 @@ From a real-world perspective, success means:
 - Achieving a minimum classification accuracy of 80%.
 - Improving document retrieval time in repositories and databases.
 - Increasing user satisfaction by making content easier to find and navigate.
+
+   ### 1.3 Data Mining Goals
+
+To achieve the stated business objectives, the project will:
+- Build a supervised classification model capable of predicting the correct subject area from textual input.
+- Use Natural Language Processing (NLP) techniques such as TF-IDF vectorization and word embeddings to extract meaningful features from text.
+- Test multiple algorithms including Logistic Regression, Random Forest, Support Vector Machines, and transformer-based models like BERT.
+- Select the model that provides the best trade-off between accuracy, speed, and interpretability.
+
