@@ -14,6 +14,7 @@ From a real-world perspective, success means:
 - Improving document retrieval time in repositories and databases.
 - Increasing user satisfaction by making content easier to find and navigate.
 
+
  ### 1.3 Data Mining Goals
 
 To achieve the stated business objectives, the project will:
