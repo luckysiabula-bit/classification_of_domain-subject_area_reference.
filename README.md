@@ -38,4 +38,6 @@ The project will be considered successful if:
 This section integrates all parts of the Business Understanding phase into a single, well-structured document. The text is organized into four main subsections: Problem Statement, Business Objectives, Data Mining Goals, and Initial Project Success Criteria. The same content is reflected in both the Google Colab notebook and the README.md file to ensure consistency between development and documentation. Formatting, headings, and numbering follow a clear and professional style for ease of reading.
 
 
-2.O SECTION
+**2.O SECTION**
+**2. Data Understanding**
+This section loads the raw dataset, performs first-look explorati
