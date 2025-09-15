@@ -1,43 +1,60 @@
-# 1. Business Understanding
+#  Project Summary: Automated Domain/Subject Area Classification  
 
-### 1.1 Problem Statement
+## 1. Business Understanding  
+- **Problem**: Manual classification of documents is slow, costly, and error-prone.  
+- **Objective**: Build an automated system to classify documents into predefined subject areas with ≥80% accuracy.  
+- **Goals**:  
+  - Reduce manual workload by 70%  
+  - Improve retrieval speed and user satisfaction  
+  - Ensure precision & recall ≥0.75  
 
-The rapid growth of digital content in education, research, and industry has made it increasingly difficult to organize and retrieve information effectively. Manual classification of documents into subject areas or domains is slow, costly, and prone to inconsistency due to human error. This creates barriers to efficient knowledge management and slows down research or learning processes. 
+---
 
-An automated classification system for domain/subject area reference will allow organizations to process large volumes of documents quickly, assign them to appropriate categories, and improve accessibility for end-users.
+## 2. Data Understanding  
+- **Dataset**: BBC News articles (1,490 rows, 3 columns: `ArticleId`, `Text`, `Category`).  
+- **Balance**: 5 categories (sport, business, politics, entertainment, tech) – relatively balanced.  
+- **Findings**: No missing values, clean data, article length ~90–3345 words.  
 
-**1.2 Business Objectives**
+---
 
-The main business objective is to develop an automated classification system that assigns documents to predefined subject areas with high accuracy and efficiency. 
+## 3. Data Preparation  
+- **Cleaning**: Lowercasing, removing punctuation/numbers, stopword removal.  
+- **Feature Engineering**:  
+  - `text_length` = number of words  
+  - `avg_word_length` = mean word size  
+- **Encoding**: Target labels encoded numerically.  
+- **Transformation**: TF-IDF vectorization (max_features=5000).  
 
-From a real-world perspective, success means:
-- Reducing manual classification workload by at least 70%.
-- Achieving a minimum classification accuracy of 80%.
-- Improving document retrieval time in repositories and databases.
-- Increasing user satisfaction by making content easier to find and navigate.
+---
 
+## 4. Modeling  
+- Tried multiple models: **Logistic Regression, Naive Bayes, Decision Tree**.  
+- Combined **TF-IDF + numeric features**.  
+- **Best Model**: Logistic Regression (balanced accuracy + speed).  
 
- ### 1.3 Data Mining Goals
+---
 
-To achieve the stated business objectives, the project will:
-- Build a supervised classification model capable of predicting the correct subject area from textual input.
-- Use Natural Language Processing (NLP) techniques such as TF-IDF vectorization and word embeddings to extract meaningful features from text.
-- Test multiple algorithms including Logistic Regression, Random Forest, Support Vector Machines, and transformer-based models like BERT.
-- Select the model that provides the best trade-off between accuracy, speed, and interpretability.
+## 5. Evaluation  
+- **Accuracy**: ~81% (meets success criteria ≥80%).  
+- **Classification Report**:  
+  - Precision & Recall above 0.75 for all classes.  
+  - Best performance: *Tech (0.91 precision)*.  
+  - Strong results overall with minor confusions (business ↔ tech).  
+- **Confusion Matrix**: Most predictions along the diagonal → good generalization.  
 
-### 1.4 Initial Project Success Criteria
+---
 
-The project will be considered successful if:
-- The model achieves at least 80% accuracy on the test dataset.
-- Precision and recall for each subject area are above 0.75.
-- The system processes at least 500 documents per minute without significant performance loss.
-- Classifications match expert-labeled results in at least 8 out of 10 randomly reviewed cases.
-  
-### 1.5 Section Integration
+## 6. Deployment  
+- **Final Model**: Logistic Regression + TF-IDF + numeric features.  
+- **Deployment options**:  
+  - API (Flask/FastAPI)  
+  - Dashboard (Streamlit/Dash)  
+  - Batch pipeline for auto-tagging new articles  
+- **Maintenance**: Retrain periodically, monitor drift, update preprocessing rules.  
 
-This section integrates all parts of the Business Understanding phase into a single, well-structured document. The text is organized into four main subsections: Problem Statement, Business Objectives, Data Mining Goals, and Initial Project Success Criteria. The same content is reflected in both the Google Colab notebook and the README.md file to ensure consistency between development and documentation. Formatting, headings, and numbering follow a clear and professional style for ease of reading.
+---
 
-
-**2.O SECTION**
-**2. Data Understanding**
-This section loads the raw dataset, performs first-look explorati
+##  Key Insights  
+- Text preprocessing and TF-IDF greatly boosted accuracy.  
+- Engineered features (length, avg word size) added useful signals.  
+- Logistic Regression gave reliable performance without heavy computation.  
